@@ -35,10 +35,10 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
     e.stopPropagation();
     setIsFavorited(!isFavorited);
     setIsAnimating(true);
-    
+
     // Reset animation state after animation completes
     setTimeout(() => setIsAnimating(false), 1000);
-    
+
     toast({
       title: isFavorited ? "Removed from favorites" : "Added to favorites",
       description: isFavorited
@@ -81,14 +81,18 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
       >
         <Card className="bg-white rounded-xl shadow-md overflow-hidden h-full hover:shadow-2xl transition duration-300">
           <div className="relative h-64 overflow-hidden rounded-t-xl">
-            <motion.img
+            <motion.video
               src={artwork.imageUrl}
               alt={artwork.title}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.08 }}
               transition={{ duration: 0.7 }}
             />
-            
+
             {/* Price badge */}
             <motion.div
               className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md z-10"
@@ -151,7 +155,7 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
                     </AnimatePresence>
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -166,7 +170,7 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
                   </Button>
                 </motion.div>
               </motion.div>
-              
+
               <motion.div
                 className="mt-4"
                 initial={{ y: 20, opacity: 0 }}
@@ -192,7 +196,7 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
                 {artwork.description}
               </p>
             </div>
-            
+
             <motion.div 
               className="flex justify-end items-center mt-2"
               whileHover={{ scale: 1.02 }}
