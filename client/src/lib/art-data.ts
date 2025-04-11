@@ -97,11 +97,11 @@ export const getRandomArtImage = () => {
 export const initialGalleryItems = [
   {
     id: 1,
-    title: "Cosmic Dreamscape",
-    description: "An ethereal landscape where cosmic energies dance across a serene horizon.",
+    title: "Diamond Serpent",
+    description: "A mesmerizing snake adorned with diamonds, its gem-like eyes gleaming against a rich red backdrop.",
     imageUrl: artImages[0],
     price: 49.99,
-    style: "abstract",
+    style: "surreal",
     prompt: "Cosmic dreamscape with ethereal energies and vibrant colors",
     styleSettings: {
       abstractToRealistic: 30,

@@ -1,26 +1,22 @@
 
-// Collection of art videos for initial display
+// Collection of art images for display
 export const artImages = [
-  "/attached_assets/video_1_20250403_214948.mp4",
-  "/attached_assets/video_2_20250403_214950.mp4",
-  "/attached_assets/video_3_20250403_214952.mp4",
-  "/attached_assets/video_4_20250403_214953.mp4",
-  "/attached_assets/video_5_20250403_214954.mp4",
-  "/attached_assets/video_1_20250403_213838.mp4",
-  "/attached_assets/video_2_20250403_213848.mp4",
-  "/attached_assets/video_3_20250403_213849.mp4"
-];
+  "-2b5c5_A_snake_with_diamonds_all_over_its_body__sparkling_with_gem_like_eyes__shining_like_stars_against_a_red_background__exquisite_and_luxurious_design__elegant_curves_and_complex_d.png",
+  "-6e8ff_An_electronic_band_consisting_of_two_men_and_one_woman__they_are_wearing_masks_that_resemble_Kanye_West_s_2013_Margiela_masks_.png",
+  "74709a_Chrome_hands_reaching.png",
+  "764477_Retro_50s_characters_looking_up_at_the_sky__terrified__UFO_in_the_background_.png",
+  "1c2786_Cinematic_shot_group_of_women_astronaut_celebrate_women_s_day_on_beautiful_moon_with_surfaces_blooming_colorful_flowers__cinematic_lighting__realistic_photo__highly_detailed__r.png",
+  "22ad2b_A_front_analog_photography_of_a_cute_black_cat_which_is_sitting_on_a_pink_toilet_and_reading_newspaper__70s_style_bathroom_with_green_wall_tiles__flowers__made_with_analog_retr.png",
+  "40f8a5_Poloroid_80_s_photo_of_a_lamborghini_engulfed_in_flames_in_Miami_Beach.png",
+  "4977af_Fashion_photography__A_man_wearing_a_beige_blazer_and_shorts_is_floating_in_the_air_with_white_socks_on_his_feet__against_a_blue_sky_background__in_the_style_of_Tim_Walker__wit.png",
+  "69c998_Flowers_grew_out_of_a_white_computer__surrounded_by_flowers_and_grass_in_the_style_of_cinema4d_rendering_and_in_the_style_of_clay_sculpture__kawaii_aesthetic__spring_garden__br.png"
+].map(img => `/attached_assets/${img}`);
 
-// Collection of interior videos
-export const interiorImages = [
-  "/attached_assets/video_1_20250403_214948.mp4",
-  "/attached_assets/video_2_20250403_214950.mp4",
-  "/attached_assets/video_3_20250403_214952.mp4",
-  "/attached_assets/video_4_20250403_214953.mp4"
-];
+// Collection of surreal/abstract art
+export const surrealistImages = artImages.slice(0, 3);
 
-// Collection of gallery/minimal space videos
-export const galleryImages = [
-  "/attached_assets/video_1_20250403_214948.mp4",
-  "/attached_assets/video_2_20250403_214950.mp4"
-];
+// Collection of retro/vintage art
+export const retroImages = artImages.slice(3, 6);
+
+// Collection of modern/contemporary art 
+export const modernImages = artImages.slice(6);
