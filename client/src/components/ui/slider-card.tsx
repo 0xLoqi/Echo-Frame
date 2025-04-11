@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import GradientSlider from "./gradient-slider";
+import { Slider } from "@/components/ui/slider";
 
 interface SliderCardProps {
   label: string;
@@ -26,6 +26,13 @@ const SliderCard: React.FC<SliderCardProps> = ({
   leftLabel,
   rightLabel,
 }) => {
+  // Handle value change from slider array to single number
+  const handleValueChange = (values: number[]) => {
+    if (values.length > 0) {
+      onChange(values[0]);
+    }
+  };
+
   return (
     <Card className="mb-4 bg-white border border-neutral-200 shadow-sm">
       <CardContent className="p-4">
@@ -40,13 +47,16 @@ const SliderCard: React.FC<SliderCardProps> = ({
         {description && (
           <p className="text-sm text-neutral-600 mb-3">{description}</p>
         )}
-        <GradientSlider
-          value={value}
-          onValueChange={onChange}
-          min={min}
-          max={max}
-          step={step}
-        />
+        <div className="py-2">
+          <Slider
+            value={[value]}
+            onValueChange={handleValueChange}
+            min={min}
+            max={max}
+            step={step}
+            className="bg-gradient-to-r from-primary to-[#FF6B6B]"
+          />
+        </div>
       </CardContent>
     </Card>
   );
