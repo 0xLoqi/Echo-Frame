@@ -71,32 +71,44 @@ const HeroSection = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 transform translate-y-8">
                   <motion.div variants={item}>
-                    <img
+                    <video
                       src={artImages[0]}
-                      alt="AI Generated Artwork"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="rounded-xl shadow-lg w-full h-56 object-cover"
                     />
                   </motion.div>
                   <motion.div variants={item}>
-                    <img
+                    <video
                       src={artImages[1]}
-                      alt="AI Generated Artwork"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="rounded-xl shadow-lg w-full h-40 object-cover"
                     />
                   </motion.div>
                 </div>
                 <div className="space-y-4">
                   <motion.div variants={item}>
-                    <img
+                    <video
                       src={artImages[2]}
-                      alt="AI Generated Artwork"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="rounded-xl shadow-lg w-full h-40 object-cover"
                     />
                   </motion.div>
                   <motion.div variants={item}>
-                    <img
+                    <video
                       src={artImages[3]}
-                      alt="AI Generated Artwork"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="rounded-xl shadow-lg w-full h-56 object-cover"
                     />
                   </motion.div>
