@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Paintbrush, Instagram, Twitter, Facebook, Share2 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,37 +8,33 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <span className="text-2xl font-bold text-white mb-4 block">
-              <i className="fas fa-paint-brush mr-2"></i>ArtifyAI
+              <Paintbrush className="inline-block mr-2 h-5 w-5" />ArtifyAI
             </span>
             <p className="text-sm text-neutral-400 mb-4">
               Using the power of AI to transform your ideas into beautiful custom
               artwork.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="#"
+              <button
                 className="text-neutral-400 hover:text-white transition"
               >
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a
-                href="#"
+                <Instagram className="h-5 w-5" />
+              </button>
+              <button
                 className="text-neutral-400 hover:text-white transition"
               >
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
+                <Twitter className="h-5 w-5" />
+              </button>
+              <button
                 className="text-neutral-400 hover:text-white transition"
               >
-                <i className="fab fa-facebook"></i>
-              </a>
-              <a
-                href="#"
+                <Facebook className="h-5 w-5" />
+              </button>
+              <button
                 className="text-neutral-400 hover:text-white transition"
               >
-                <i className="fab fa-pinterest"></i>
-              </a>
+                <Share2 className="h-5 w-5" />
+              </button>
             </div>
           </div>
 
@@ -46,22 +43,22 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link href="/create">
-                  <a className="hover:text-white transition">Create Art</a>
+                  <div className="cursor-pointer hover:text-white transition">Create Art</div>
                 </Link>
               </li>
               <li>
                 <Link href="/gallery">
-                  <a className="hover:text-white transition">Gallery</a>
+                  <div className="cursor-pointer hover:text-white transition">Gallery</div>
                 </Link>
               </li>
               <li>
                 <Link href="/#how-it-works">
-                  <a className="hover:text-white transition">How It Works</a>
+                  <div className="cursor-pointer hover:text-white transition">How It Works</div>
                 </Link>
               </li>
               <li>
                 <Link href="/#pricing">
-                  <a className="hover:text-white transition">Pricing</a>
+                  <div className="cursor-pointer hover:text-white transition">Pricing</div>
                 </Link>
               </li>
             </ul>
@@ -71,24 +68,24 @@ const Footer = () => {
             <h3 className="text-lg font-medium text-white mb-4">Support</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <button className="hover:text-white transition">
                   FAQ
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <button className="hover:text-white transition">
                   Shipping
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <button className="hover:text-white transition">
                   Returns
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <button className="hover:text-white transition">
                   Contact Us
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -114,15 +111,15 @@ const Footer = () => {
         <div className="border-t border-neutral-700 mt-8 pt-8 text-sm text-neutral-500 flex flex-col md:flex-row justify-between items-center">
           <div>© {new Date().getFullYear()} ArtifyAI. All rights reserved.</div>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-neutral-300">
+            <button className="hover:text-neutral-300">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-neutral-300">
+            </button>
+            <button className="hover:text-neutral-300">
               Terms of Service
-            </a>
-            <a href="#" className="hover:text-neutral-300">
+            </button>
+            <button className="hover:text-neutral-300">
               Cookies
-            </a>
+            </button>
           </div>
         </div>
       </div>
