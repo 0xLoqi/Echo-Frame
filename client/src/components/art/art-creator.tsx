@@ -6,6 +6,7 @@ import { queryClient, apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Paintbrush, Wand2, Upload, Mic, RefreshCw, Heart, Share, ShoppingCart, Sparkles, ChevronDown } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -31,17 +32,6 @@ import {
   generateTitleFromPrompt,
 } from "@/lib/art-data";
 import { StyleSettings } from "@shared/schema";
-import { 
-  Wand2, 
-  Sparkles, 
-  RefreshCw, 
-  Heart, 
-  Share, 
-  Upload, 
-  Mic,
-  LightbulbIcon,
-  ShoppingCart
-} from "lucide-react";
 
 interface ArtCreatorProps {
   onArtCreated?: (artwork: any) => void;
@@ -231,7 +221,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                 Advanced Options
               </span>
               <button className="text-primary">
-                <i className="fas fa-angle-down"></i>
+                <ChevronDown className="h-5 w-5" />
               </button>
             </div>
 
