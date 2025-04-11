@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Paintbrush } from "lucide-react";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,22 +34,22 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
-            <div className="cursor-pointer text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF6B6B] flex items-center">
-              <Paintbrush className="mr-2 h-5 w-5" />ArtifyAI
-            </div>
+            <a className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF6B6B] flex items-center">
+              <i className="fas fa-paint-brush mr-2"></i>ArtifyAI
+            </a>
           </Link>
         </div>
 
         <div className="hidden md:flex space-x-8 text-neutral-800 font-medium">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
-              <div
-                className={`cursor-pointer transition hover:text-primary ${
+              <a
+                className={`transition hover:text-primary ${
                   location === link.href ? "text-primary" : ""
                 }`}
               >
                 {link.label}
-              </div>
+              </a>
             </Link>
           ))}
         </div>
@@ -76,13 +76,13 @@ const Navbar = () => {
               <div className="flex flex-col gap-4 mt-8">
                 {navLinks.map((link) => (
                   <Link key={link.href} href={link.href}>
-                    <div
-                      className={`cursor-pointer text-lg py-2 transition hover:text-primary ${
+                    <a
+                      className={`text-lg py-2 transition hover:text-primary ${
                         location === link.href ? "text-primary font-medium" : ""
                       }`}
                     >
                       {link.label}
-                    </div>
+                    </a>
                   </Link>
                 ))}
                 <div className="mt-4 pt-4 border-t border-neutral-200">

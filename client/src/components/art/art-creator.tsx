@@ -6,7 +6,6 @@ import { queryClient, apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Paintbrush, Wand2, Upload, Mic, RefreshCw, Heart, Share, ShoppingCart, Sparkles, ChevronDown } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -201,7 +200,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                   generating ? "opacity-0" : "opacity-100"
                 } transition-opacity`}
               >
-                <Wand2 className="mr-2 h-5 w-5" />
+                <i className="fas fa-wand-magic-sparkles mr-2"></i>
                 Create Your Artwork
               </span>
               <span
@@ -209,7 +208,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                   generating ? "opacity-100" : "opacity-0"
                 } transition-opacity`}
               >
-                <Sparkles className="mr-2 h-5 w-5 animate-spin" />
+                <i className="fas fa-sparkles animate-spin mr-2"></i>
                 Working Magic...
               </span>
             </Button>
@@ -221,7 +220,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                 Advanced Options
               </span>
               <button className="text-primary">
-                <ChevronDown className="h-5 w-5" />
+                <i className="fas fa-angle-down"></i>
               </button>
             </div>
 
@@ -233,7 +232,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                       variant="outline"
                       className="flex-1 p-6 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition text-sm"
                     >
-                      <Upload className="mr-2 h-4 w-4" />
+                      <i className="fas fa-upload mr-2"></i>
                       Upload Reference
                     </Button>
                   </TooltipTrigger>
@@ -250,7 +249,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                       variant="outline"
                       className="flex-1 p-6 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition text-sm"
                     >
-                      <Mic className="mr-2 h-4 w-4" />
+                      <i className="fas fa-microphone mr-2"></i>
                       Voice to Art
                     </Button>
                   </TooltipTrigger>
@@ -275,7 +274,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                 onClick={() => generating || generateArt()}
                 disabled={generating}
               >
-                <RefreshCw className="h-5 w-5 text-neutral-600" />
+                <i className="fas fa-arrows-rotate text-neutral-600"></i>
               </Button>
               <Button
                 size="icon"
@@ -283,7 +282,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 transition"
                 disabled={!currentArt}
               >
-                <Heart className="h-5 w-5 text-neutral-600" />
+                <i className="far fa-heart text-neutral-600"></i>
               </Button>
               <Button
                 size="icon"
@@ -291,7 +290,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 transition"
                 disabled={!currentArt}
               >
-                <Share className="h-5 w-5 text-neutral-600" />
+                <i className="fas fa-share-nodes text-neutral-600"></i>
               </Button>
             </div>
           </div>
@@ -308,7 +307,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
               {!currentArt && !generating && (
                 <div className="text-center p-6">
                   <div className="text-5xl mb-4 text-neutral-300">
-                    <Paintbrush className="h-16 w-16 mx-auto" />
+                    <i className="fas fa-paint-brush"></i>
                   </div>
                   <h3 className="text-xl font-medium text-neutral-500 mb-2">
                     Your Canvas Awaits
@@ -333,9 +332,9 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="mb-4 text-primary"
+                    className="text-5xl mb-4 text-primary"
                   >
-                    <Wand2 className="h-16 w-16 mx-auto" />
+                    <i className="fas fa-wand-magic-sparkles"></i>
                   </motion.div>
                   <h3 className="text-xl font-medium text-neutral-600 mb-2">
                     Creating Your Masterpiece...
@@ -387,7 +386,7 @@ const ArtCreator: React.FC<ArtCreatorProps> = ({ onArtCreated }) => {
               <div className="mt-6 text-center">
                 <Link href={`/art/${currentArt.id}`}>
                   <Button className="px-6 py-6 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full shadow-md hover:shadow-lg transition">
-                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    <i className="fas fa-shopping-cart mr-2"></i>
                     Order Print
                   </Button>
                 </Link>
