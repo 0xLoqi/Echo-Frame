@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import SliderCard from "@/components/ui/slider-card";
+import GradientSlider from "@/components/ui/gradient-slider";
 import {
   Card,
   CardContent,
@@ -122,238 +123,223 @@ const SimplifiedArtCreator: React.FC<SimplifiedArtCreatorProps> = ({ onArtCreate
   return (
     <motion.div
       layout
-      className="w-full transition-all duration-500"
-      animate={{ height: 'auto' }}
+      className="w-full"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0.8 }}
     >
       <Card className="bg-white border border-neutral-200 shadow-md rounded-xl overflow-hidden">
-        <CardContent className="p-0">
-          <div className="p-6">
-            <motion.div layout>
-              <div className="mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-neutral-800 font-medium">Describe Your Vision</label>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-neutral-500 hover:text-primary"
-                    onClick={getNewRandomPrompt}
-                  >
-                    <RefreshCw className="h-4 w-4 mr-1" />
-                    Random
-                  </Button>
-                </div>
-                
-                <motion.div 
-                  layout
-                  className="relative"
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Textarea
-                    ref={promptInputRef}
-                    placeholder="Enter a detailed description of what you want to create..."
-                    className="min-h-24 resize-none border-neutral-200 focus:border-primary"
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                  />
-                  
-                  <AnimatePresence>
-                    {prompt.length > 0 && (
-                      <motion.button
-                        className="absolute bottom-3 right-3 text-neutral-400 hover:text-neutral-600"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        onClick={() => setPrompt("")}
-                      >
-                        <i className="fas fa-times-circle"></i>
-                      </motion.button>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </div>
-
-              <div className="space-y-6">
-                <motion.div layout>
-                  <SliderCard
-                    label="Artistic Style"
-                    description=""
-                    leftLabel="Abstract"
-                    rightLabel="Realistic"
-                    value={styleSettings.abstractToRealistic}
-                    onChange={(value) => updateStyleSetting("abstractToRealistic", value)}
-                  />
-                </motion.div>
-                
-                <motion.div layout>
-                  <SliderCard
-                    label="Color Mood"
-                    description=""
-                    leftLabel="Warm"
-                    rightLabel="Cool"
-                    value={styleSettings.warmToCool}
-                    onChange={(value) => updateStyleSetting("warmToCool", value)}
-                  />
-                </motion.div>
-              </div>
-
+        <CardContent className="p-4">
+          {/* Prompt Input */}
+          <div className="mb-4">
+            <div className="flex justify-between items-center mb-1">
+              <label className="text-neutral-600 text-sm font-medium">Describe your vision</label>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="text-xs text-neutral-500 hover:text-primary h-6 px-2"
+                onClick={getNewRandomPrompt}
+              >
+                <RefreshCw className="h-3 w-3 mr-1" />
+                Random
+              </Button>
+            </div>
+            
+            <div className="relative">
+              <Textarea
+                ref={promptInputRef}
+                placeholder="Describe what you want to create..."
+                className="resize-none border-neutral-200 focus:border-primary h-14 py-2 text-sm"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+              />
+              
               <AnimatePresence>
-                {showAdvanced && (
-                  <motion.div 
-                    layout
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="mt-6 space-y-6"
+                {prompt.length > 0 && (
+                  <motion.button
+                    className="absolute bottom-2 right-2 text-neutral-400 hover:text-neutral-600"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={() => setPrompt("")}
                   >
-                    <SliderCard
-                      label="Complexity"
-                      description=""
-                      leftLabel="Minimal"
-                      rightLabel="Detailed"
-                      value={styleSettings.minimalToDetailed}
-                      onChange={(value) => updateStyleSetting("minimalToDetailed", value)}
-                    />
-                    
-                    <div className="space-y-2">
-                      <label className="text-neutral-800 font-medium block">Artistic Influence</label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {artisticInfluences.map((influence: string) => (
-                          <motion.div
-                            key={influence}
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                          >
-                            <Button
-                              variant={
-                                styleSettings.artisticInfluence === influence
-                                  ? "default"
-                                  : "outline"
-                              }
-                              className={`w-full h-full py-1.5 ${
-                                styleSettings.artisticInfluence === influence
-                                  ? "bg-primary text-white"
-                                  : "bg-white hover:bg-neutral-100"
-                              }`}
-                              onClick={() =>
-                                updateStyleSetting("artisticInfluence", influence)
-                              }
-                            >
-                              {influence}
-                            </Button>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+                    <i className="fas fa-times-circle text-sm"></i>
+                  </motion.button>
                 )}
               </AnimatePresence>
-            </motion.div>
-            
-            <motion.div 
-              layout 
-              className="flex justify-between items-center mt-6"
-            >
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-neutral-600 px-3"
-                onClick={() => setShowAdvanced(!showAdvanced)}
-              >
-                {showAdvanced ? (
-                  <>
-                    <ChevronUp className="h-4 w-4 mr-1" />
-                    Less options
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="h-4 w-4 mr-1" />
-                    More options
-                  </>
-                )}
-              </Button>
-              
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Button
-                  onClick={generateArt}
-                  disabled={generating || !prompt.trim()}
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-md"
-                >
-                  {generating ? (
-                    <div className="flex items-center">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="mr-2"
-                      >
-                        <RefreshCw className="h-4 w-4" />
-                      </motion.div>
-                      Creating...
-                    </div>
-                  ) : (
-                    <div className="flex items-center">
-                      <PulseAnimation className="mr-2" duration={3}>
-                        <Wand2 className="h-4 w-4" />
-                      </PulseAnimation>
-                      Create Magic
-                    </div>
-                  )}
-                </Button>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
-          
-          {/* Preview area */}
+
+          {/* Sliders */}
+          <div className="space-y-3">
+            <div>
+              <div className="flex justify-between items-center mb-1">
+                <label className="text-neutral-600 text-sm font-medium">Style</label>
+                <div className="text-xs text-neutral-500 flex justify-between w-full max-w-[160px]">
+                  <span>Abstract</span>
+                  <span>Realistic</span>
+                </div>
+              </div>
+              <GradientSlider
+                value={[styleSettings.abstractToRealistic]}
+                onValueChange={(value) => updateStyleSetting("abstractToRealistic", value)}
+                min={0}
+                max={100}
+                step={1}
+                className="w-full"
+              />
+            </div>
+            
+            <div>
+              <div className="flex justify-between items-center mb-1">
+                <label className="text-neutral-600 text-sm font-medium">Color Mood</label>
+                <div className="text-xs text-neutral-500 flex justify-between w-full max-w-[160px]">
+                  <span>Warm</span>
+                  <span>Cool</span>
+                </div>
+              </div>
+              <GradientSlider
+                value={[styleSettings.warmToCool]}
+                onValueChange={(value) => updateStyleSetting("warmToCool", value)}
+                min={0}
+                max={100}
+                step={1}
+                className="w-full"
+              />
+            </div>
+          </div>
+
+          {/* Advanced Options Toggle & Create Button */}
+          <div className="flex justify-between items-center mt-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs text-neutral-600 h-7 px-2"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+            >
+              {showAdvanced ? (
+                <>
+                  <ChevronUp className="h-3 w-3 mr-1" />
+                  Less options
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-3 w-3 mr-1" />
+                  More options
+                </>
+              )}
+            </Button>
+            
+            <Button
+              onClick={generateArt}
+              disabled={generating || !prompt.trim()}
+              size="sm"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full h-8 px-4 shadow-sm"
+            >
+              {generating ? (
+                <div className="flex items-center text-xs">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="mr-1"
+                  >
+                    <RefreshCw className="h-3 w-3" />
+                  </motion.div>
+                  Creating...
+                </div>
+              ) : (
+                <div className="flex items-center text-xs">
+                  <PulseAnimation className="mr-1" duration={3}>
+                    <Wand2 className="h-3 w-3" />
+                  </PulseAnimation>
+                  Create Magic
+                </div>
+              )}
+            </Button>
+          </div>
+
+          {/* Advanced Options */}
           <AnimatePresence>
-            {currentArt && (
-              <motion.div
-                layout
+            {showAdvanced && (
+              <motion.div 
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.5 }}
+                className="mt-3 pt-3 border-t border-neutral-100"
               >
-                <div className="border-t border-neutral-200 p-6 bg-neutral-50">
-                  <div className="text-center mb-6">
-                    <motion.h3 
-                      className="text-xl font-semibold mb-2"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      {currentArt.title}
-                    </motion.h3>
-                    <motion.p 
-                      className="text-neutral-600 italic max-w-2xl mx-auto"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      {currentArt.description}
-                    </motion.p>
-                  </div>
-                  
-                  <div className="max-w-md mx-auto">
-                    <ArtPreview
-                      imageUrl={currentArt.imageUrl}
-                      isNew={true}
-                      className="rounded-lg shadow-lg"
+                <div className="space-y-3">
+                  <div>
+                    <div className="flex justify-between items-center mb-1">
+                      <label className="text-neutral-600 text-sm font-medium">Detail Level</label>
+                      <div className="text-xs text-neutral-500 flex justify-between w-full max-w-[160px]">
+                        <span>Minimal</span>
+                        <span>Detailed</span>
+                      </div>
+                    </div>
+                    <GradientSlider
+                      value={[styleSettings.minimalToDetailed]}
+                      onValueChange={(value) => updateStyleSetting("minimalToDetailed", value)}
+                      min={0}
+                      max={100}
+                      step={1}
+                      className="w-full"
                     />
                   </div>
                   
-                  <div className="flex justify-center mt-4">
-                    <Button className="bg-neutral-800 hover:bg-neutral-700 text-white mt-4">
-                      <Image className="h-4 w-4 mr-2" />
-                      View in Gallery
-                    </Button>
+                  <div>
+                    <label className="text-neutral-600 text-sm font-medium block mb-1">Artistic Influence</label>
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {artisticInfluences.map((influence) => (
+                        <Button
+                          key={influence.id}
+                          variant={
+                            styleSettings.artisticInfluence === influence.id
+                              ? "default"
+                              : "outline"
+                          }
+                          size="sm"
+                          className={`text-xs py-0.5 h-7 ${
+                            styleSettings.artisticInfluence === influence.id
+                              ? "bg-primary text-white"
+                              : "bg-white hover:bg-neutral-100"
+                          }`}
+                          onClick={() =>
+                            updateStyleSetting("artisticInfluence", influence.id)
+                          }
+                        >
+                          {influence.id}
+                        </Button>
+                      ))}
+                    </div>
                   </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
+          {/* Generated Art Preview */}
+          <AnimatePresence>
+            {currentArt && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="mt-4 pt-3 border-t border-neutral-200"
+              >
+                <div className="text-center mb-3">
+                  <h3 className="text-base font-medium">{currentArt.title}</h3>
+                </div>
+                
+                <div className="rounded-md overflow-hidden shadow-md">
+                  <ArtPreview
+                    imageUrl={currentArt.imageUrl}
+                    isNew={true}
+                    className="w-full"
+                  />
                 </div>
               </motion.div>
             )}
