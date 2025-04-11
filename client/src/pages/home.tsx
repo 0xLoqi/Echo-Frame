@@ -41,7 +41,8 @@ export default function Home() {
           >
             <iframe
               src="/create"
-              className="w-full h-[600px] border-0 rounded-3xl shadow-xl"
+              className="w-full h-[600px] border-0 rounded-3xl shadow-xl overflow-hidden"
+              style={{ margin: 0, padding: 0 }}
               title="Art Creator"
             ></iframe>
           </motion.div>
