@@ -70,7 +70,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 transform translate-y-8">
-                  <motion.div variants={item}>
+                  <motion.div variants={item} className="bg-neutral-100 rounded-xl">
                     <video
                       src={artImages[0]}
                       autoPlay
@@ -78,9 +78,10 @@ const HeroSection = () => {
                       muted
                       playsInline
                       className="rounded-xl shadow-lg w-full h-56 object-cover"
+                      style={{ backgroundColor: '#f5f5f5' }}
                     />
                   </motion.div>
-                  <motion.div variants={item}>
+                  <motion.div variants={item} className="bg-neutral-100 rounded-xl">
                     <video
                       src={artImages[1]}
                       autoPlay
@@ -88,11 +89,12 @@ const HeroSection = () => {
                       muted
                       playsInline
                       className="rounded-xl shadow-lg w-full h-40 object-cover"
+                      style={{ backgroundColor: '#f5f5f5' }}
                     />
                   </motion.div>
                 </div>
                 <div className="space-y-4">
-                  <motion.div variants={item}>
+                  <motion.div variants={item} className="bg-neutral-100 rounded-xl">
                     <video
                       src={artImages[2]}
                       autoPlay
@@ -100,9 +102,10 @@ const HeroSection = () => {
                       muted
                       playsInline
                       className="rounded-xl shadow-lg w-full h-40 object-cover"
+                      style={{ backgroundColor: '#f5f5f5' }}
                     />
                   </motion.div>
-                  <motion.div variants={item}>
+                  <motion.div variants={item} className="bg-neutral-100 rounded-xl">
                     <video
                       src={artImages[3]}
                       autoPlay
@@ -110,6 +113,7 @@ const HeroSection = () => {
                       muted
                       playsInline
                       className="rounded-xl shadow-lg w-full h-56 object-cover"
+                      style={{ backgroundColor: '#f5f5f5' }}
                     />
                   </motion.div>
                 </div>
