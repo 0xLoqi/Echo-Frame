@@ -22,7 +22,7 @@ export default function Create() {
   }, [createdArtwork, setLocation]);
 
   return (
-    <div className="bg-white">
+    <div className="flex items-center justify-center min-h-screen bg-white">
       <SimplifiedArtCreator onArtCreated={handleArtCreated} />
     </div>
   );
