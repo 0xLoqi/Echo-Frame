@@ -22,7 +22,7 @@ const Testimonials = () => {
     },
     {
       rating: 4.5,
-      text: "As an art lover with limited budget, ArtifyAI lets me decorate my apartment with beautiful, unique pieces that feel custom-made for my space.",
+      text: "As an art lover with limited budget, Echo & Frame lets me decorate my apartment with beautiful, unique pieces that feel custom-made for my space.",
       name: "Jamie L.",
       title: "Graduate Student",
     },

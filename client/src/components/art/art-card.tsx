@@ -13,13 +13,14 @@ import {
   PulseAnimation,
   FloatingAnimation
 } from "@/components/ui/motion-effects";
+import { Heart, Share2, ImageOff } from "lucide-react";
 
 interface ArtCardProps {
   artwork: {
     id: number;
     title: string;
     description: string;
-    imageUrl: string;
+    imageUrl?: string;
     price: number;
   };
 }
@@ -29,6 +30,47 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const isVideo = artwork?.imageUrl?.endsWith('.mp4') || false;
+  
+  // Robust URL Sanitization with path correction
+  const getSanitizedUrl = (url: string | undefined): string => {
+    if (!url) return '';
+    try {
+      // Strip any leading slashes
+      const cleanPath = url.replace(/^\/+/, '');
+      
+      // Check if the URL path is in attached_assets but should be in assets
+      let correctedPath = cleanPath;
+      if (cleanPath.startsWith('attached_assets/')) {
+        // Get the filename after the directory
+        const filename = cleanPath.replace('attached_assets/', '');
+        
+        // Check if it's a file with a hash ID pattern at the start
+        if (/^[-]?[0-9a-f]{5,6}_/.test(filename)) {
+          correctedPath = `assets/${filename}`;
+        }
+      }
+      
+      // Split path and filename
+      const parts = correctedPath.split('/');
+      const filename = parts.pop() || ''; 
+      const directoryPath = parts.join('/'); 
+      
+      // Encode the filename
+      const encodedFilename = encodeURIComponent(filename);
+      
+      // Return the full path with a leading slash
+      return `/${directoryPath}/${encodedFilename}`;
+      
+    } catch (e) {
+      console.error("Error sanitizing URL:", url, e);
+      return url; // Fallback to original URL on error
+    }
+  };
+
+  const sanitizedImageUrl = getSanitizedUrl(artwork.imageUrl);
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -65,158 +107,99 @@ const ArtCard: React.FC<ArtCardProps> = ({ artwork }) => {
     });
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement | HTMLVideoElement>) => {
+    console.warn("Media Error:", sanitizedImageUrl);
+    setImageError(true);
+  };
+
+  // Get a placeholder image for better design
+  const getPlaceholderImage = () => {
+    return "/assets/image_1744333768495.png";
+  };
+
   return (
-    <Link href={`/art/${artwork.id}`}>
-      <motion.div
-        whileHover={{ y: -10 }}
-        whileTap={{ scale: 0.98 }}
-        className="art-card group h-full cursor-pointer"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        transition={{ 
-          type: "spring", 
-          stiffness: 300, 
-          damping: 15 
-        }}
-      >
-        <Card className="bg-white rounded-xl shadow-md overflow-hidden h-full hover:shadow-2xl transition duration-300">
-          <div className="relative h-64 overflow-hidden rounded-t-xl">
-            <motion.video
-              src={artwork.imageUrl}
-              alt={artwork.title}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.7 }}
-            />
-
-            {/* Price badge */}
-            <motion.div
-              className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md z-10"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <FloatingAnimation duration={3}>
-                <span className="text-sm font-medium text-primary">
-                  ${artwork.price.toFixed(2)}+
-                </span>
-              </FloatingAnimation>
-            </motion.div>
-
-            {/* Overlay */}
-            <motion.div
-              className="art-card-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
+    <Card className="group overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg hover:shadow-xl transition-all duration-300">
+      <Link href={`/art/${artwork.id}`}>
+        <div className="cursor-pointer">
+          <div className="relative h-64 overflow-hidden rounded-t-xl bg-neutral-200 dark:bg-neutral-700">
+            {sanitizedImageUrl && !imageError ? (
+              isVideo ? (
+                <motion.video
+                  src={sanitizedImageUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.7 }}
+                  onError={handleImageError}
+                />
+              ) : (
+                <motion.img
+                  src={sanitizedImageUrl}
+                  alt={artwork.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.7 }}
+                  onError={handleImageError}
+                />
+              )
+            ) : (
               <motion.div 
-                className="flex justify-between items-center"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                className="w-full h-full flex flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-800"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.5 }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    onClick={handleFavorite}
-                    className="p-2 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 transition text-white"
-                  >
-                    <AnimatePresence mode="wait">
-                      {isAnimating && isFavorited ? (
-                        <motion.div
-                          key="heart-animation"
-                          initial={{ scale: 0 }}
-                          animate={{ scale: [1, 1.5, 1] }}
-                          exit={{ scale: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <i className="fas fa-heart text-red-500"></i>
-                        </motion.div>
-                      ) : (
-                        <motion.i
-                          key="heart-icon"
-                          className={`${
-                            isFavorited ? "fas" : "far"
-                          } fa-heart ${isFavorited ? "text-red-500" : "text-white"}`}
-                          initial={{ scale: 1 }}
-                          animate={{ scale: [1, isFavorited ? 1.2 : 1, 1] }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      )}
-                    </AnimatePresence>
-                  </Button>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    onClick={handleShare}
-                    className="p-2 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 transition text-white"
-                  >
-                    <i className="fas fa-share-nodes text-white"></i>
-                  </Button>
-                </motion.div>
+                <img 
+                  src={getPlaceholderImage()} 
+                  alt="Placeholder" 
+                  className="w-full h-full object-cover opacity-60"
+                  onError={(e) => e.currentTarget.style.display = 'none'}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-neutral-500 bg-neutral-100/70 dark:bg-neutral-800/70">
+                  <ImageOff className="h-10 w-10 mb-2 opacity-50" />
+                  <p className="text-center px-4 font-medium">Preview unavailable</p>
+                </div>
               </motion.div>
-
-              <motion.div
-                className="mt-4"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-              >
-                <h3 className="font-medium text-lg text-white mb-1">
-                  {artwork.title}
-                </h3>
-                <p className="text-sm text-white/80 line-clamp-2 italic font-['Playfair_Display',_serif]">
-                  {artwork.description}
-                </p>
-              </motion.div>
-            </motion.div>
+            )}
           </div>
 
-          <CardContent className="p-4">
-            <div className="min-h-[80px]">
-              <h3 className="font-medium text-lg mb-1 text-neutral-800">
-                {artwork.title}
-              </h3>
-              <p className="text-sm text-neutral-600 mb-3 art-description italic font-['Playfair_Display',_serif] line-clamp-2">
-                {artwork.description}
-              </p>
+          <div className="p-4">
+            <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-1 line-clamp-1">
+              {artwork.title}
+            </h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 mb-4">
+              {artwork.description}
+            </p>
+            
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-semibold text-[#7c5cff]">
+                ${artwork.price}
+              </span>
+              <div className="flex gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-neutral-500 hover:text-[#7c5cff] dark:text-neutral-400 dark:hover:text-[#7c5cff]"
+                  onClick={handleFavorite}
+                >
+                  <Heart className={`h-5 w-5 ${isFavorited ? "fill-[#7c5cff] text-[#7c5cff]" : ""}`} />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-neutral-500 hover:text-[#7c5cff] dark:text-neutral-400 dark:hover:text-[#7c5cff]"
+                  onClick={handleShare}
+                >
+                  <Share2 className="h-5 w-5" />
+                </Button>
+              </div>
             </div>
-
-            <motion.div 
-              className="flex justify-end items-center mt-2"
-              whileHover={{ scale: 1.02 }}
-            >
-              <Button
-                size="sm"
-                variant="ghost"
-                onClick={handleRemix}
-                className="px-4 py-1.5 text-sm rounded-full bg-gradient-to-r from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 transition shadow-sm"
-              >
-                <PulseAnimation className="mr-2" duration={3}>
-                  <i className="fas fa-wand-magic-sparkles text-primary"></i>
-                </PulseAnimation>
-                Remix
-              </Button>
-            </motion.div>
-          </CardContent>
-        </Card>
-      </motion.div>
-    </Link>
+          </div>
+        </div>
+      </Link>
+    </Card>
   );
 };
 

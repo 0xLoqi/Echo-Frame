@@ -1,4 +1,5 @@
 import { Switch, Route } from "wouter";
+import { useScrollToTop } from "@/hooks/use-navigation";
 
 // Pages
 import Home from "@/pages/home";
@@ -13,6 +14,9 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
 function App() {
+  // Hook that scrolls to top on route change
+  useScrollToTop();
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />

@@ -29,7 +29,9 @@ export default function Home() {
   return (
     <div className="bg-gradient-to-b from-[#f5f0ff] to-[#fafbff]">
       <HeroSection />
-      <VideoGallery />
+      <div className="pt-4 pb-16">
+        <VideoGallery />
+      </div>
 
       <section className="py-16 bg-gradient-to-b from-[#f5f0ff] to-[#f0f5ff]">
         <HowItWorks />

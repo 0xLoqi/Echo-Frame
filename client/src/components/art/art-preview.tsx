@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface ArtPreviewProps {
   imageUrl: string;
@@ -11,13 +12,37 @@ const ArtPreview: React.FC<ArtPreviewProps> = ({
   isNew = false,
   className = "",
 }) => {
+  const isVideo = imageUrl.endsWith('.mp4');
+
   return (
-    <div className={`relative w-full h-full ${className}`}>
-      <img
-        src={imageUrl}
-        alt="Generated artwork"
-        className="w-full h-full object-cover"
-      />
+    <motion.div
+      className={cn("relative overflow-hidden", className)}
+      initial={isNew ? { opacity: 0, scale: 0.8 } : {}}
+      animate={isNew ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5 }}
+    >
+      {isVideo ? (
+        <motion.video
+          src={imageUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          initial={false}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4 }}
+        />
+      ) : (
+        <motion.img
+          src={imageUrl}
+          alt="Generated artwork"
+          className="w-full h-full object-cover"
+          initial={false}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4 }}
+        />
+      )}
 
       {isNew && (
         <motion.div
@@ -33,7 +58,7 @@ const ArtPreview: React.FC<ArtPreviewProps> = ({
           </div>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

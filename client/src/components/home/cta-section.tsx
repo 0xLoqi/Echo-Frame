@@ -23,7 +23,7 @@ const CTASection = () => {
           <Link href="/create">
             <Button
               size="lg"
-              className="inline-block px-8 py-8 bg-white text-primary rounded-full font-medium shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+              className="inline-block px-8 bg-white text-primary rounded-full font-medium shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg"
             >
               Start Creating Now
               <i className="fas fa-arrow-right ml-2"></i>

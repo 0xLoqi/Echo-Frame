@@ -32,15 +32,15 @@ const Navbar = () => {
         isScrolled ? "shadow-md" : "shadow-sm"
       } backdrop-blur-md bg-background/80`}
     >
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex-shrink-0">
+      <div className="container mx-auto px-4 py-1 flex items-center">
+        <div className="w-[180px]">
           <Link href="/" className="block">
             <Logo />
           </Link>
         </div>
 
-        <div className="hidden md:flex flex-grow justify-center">
-          <div className="flex space-x-8 text-neutral-800 font-medium">
+        <div className="hidden md:flex flex-1 justify-center">
+          <div className="flex space-x-12 text-neutral-800 font-medium">
             {navLinks.map((link) => (
               <Link 
                 key={link.href} 
@@ -55,7 +55,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex-shrink-0 flex items-center gap-2">
+        <div className="w-[180px] flex justify-end">
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>

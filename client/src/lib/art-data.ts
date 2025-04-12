@@ -98,121 +98,121 @@ export const initialGalleryItems = [
   {
     id: 1,
     title: "Diamond Serpent",
-    description: "A mesmerizing snake adorned with diamonds, its gem-like eyes gleaming against a rich red backdrop.",
-    imageUrl: artImages[0],
+    description: "A snake with diamonds all over its body, sparkling with gem-like eyes, shining like stars against a red background.",
+    imageUrl: "/assets/-2b5c5_A_snake_with_diamonds_all_over_its_body__sparkling_with_gem_like_eyes__shining_like_stars_against_a_red_background__exquisite_and_luxurious_design__elegant_curves_and_complex_d.png",
     price: 49.99,
     style: "surreal",
-    prompt: "Cosmic dreamscape with ethereal energies and vibrant colors",
+    prompt: "A snake with diamonds all over its body, sparkling with gem-like eyes, shining like stars against a red background",
     styleSettings: {
-      abstractToRealistic: 30,
-      warmToCool: 60,
-      minimalToDetailed: 75,
+      abstractToRealistic: 70,
+      warmToCool: 80,
+      minimalToDetailed: 90,
       artisticInfluence: "surrealism"
     }
   },
   {
     id: 2,
-    title: "Neon Futurism",
-    description: "A vibrant cityscape where cyberpunk aesthetics meet technological dreams.",
-    imageUrl: artImages[1],
+    title: "Cosmic Garden",
+    description: "A highly detailed astronaut in a realistic space suit standing at the center of a vast field of pink cosmos flowers on Mars.",
+    imageUrl: "/assets/2ad607_A_highly_detailed_astronaut_in_a_realistic__well_textured_space_suit_standing_at_the_center_of_a_vast_field_of_pink_cosmos_flowers_on_Mars__The_astronaut_s_suit_appears_natural.png",
     price: 49.99,
     style: "surreal",
-    prompt: "Neon cyberpunk city with futuristic technology and bright colors",
+    prompt: "A highly detailed astronaut in a realistic space suit standing at the center of a vast field of pink cosmos flowers on Mars",
     styleSettings: {
-      abstractToRealistic: 60,
-      warmToCool: 20,
-      minimalToDetailed: 90,
+      abstractToRealistic: 85,
+      warmToCool: 60,
+      minimalToDetailed: 95,
       artisticInfluence: "cyberpunk"
     }
   },
   {
     id: 3,
-    title: "Serene Abstraction",
-    description: "Flowing forms and gentle colors create a meditative visual experience.",
-    imageUrl: artImages[2],
+    title: "Digital Bloom",
+    description: "Flowers growing out of a white computer, surrounded by flowers and grass in a whimsical clay sculpture style.",
+    imageUrl: "/assets/69c998_Flowers_grew_out_of_a_white_computer__surrounded_by_flowers_and_grass_in_the_style_of_cinema4d_rendering_and_in_the_style_of_clay_sculpture__kawaii_aesthetic__spring_garden__br.png",
     price: 49.99,
     style: "abstract",
-    prompt: "Flowing abstract forms with gentle pastel colors for meditation",
+    prompt: "Flowers growing out of a white computer, surrounded by flowers and grass in the style of clay sculpture",
     styleSettings: {
-      abstractToRealistic: 10,
-      warmToCool: 70,
-      minimalToDetailed: 30,
+      abstractToRealistic: 40,
+      warmToCool: 65,
+      minimalToDetailed: 75,
       artisticInfluence: "minimalism"
     }
   },
   {
     id: 4,
-    title: "Mystical Forest",
-    description: "An enchanted woodland scene with magical lighting and fantastical elements.",
-    imageUrl: artImages[3],
+    title: "Retro UFO Encounter",
+    description: "A group of 1950s characters looking up at the sky in terror as a mysterious UFO hovers in the background.",
+    imageUrl: "/assets/764477_Retro_50s_characters_looking_up_at_the_sky__terrified__UFO_in_the_background_.png",
     price: 49.99,
-    style: "landscape",
-    prompt: "Mystical forest with magical lighting and fantasy elements",
+    style: "surreal",
+    prompt: "Retro 50s characters looking up at the sky, terrified, UFO in the background",
     styleSettings: {
       abstractToRealistic: 75,
       warmToCool: 40,
       minimalToDetailed: 85,
-      artisticInfluence: "ghibli"
-    }
-  },
-  {
-    id: 5,
-    title: "Urban Rhythm",
-    description: "Powerful brushstrokes capture the emotion and energy of metropolitan life.",
-    imageUrl: artImages[4],
-    price: 49.99,
-    style: "abstract",
-    prompt: "Urban cityscape with dynamic brushstrokes capturing energy",
-    styleSettings: {
-      abstractToRealistic: 50,
-      warmToCool: 30,
-      minimalToDetailed: 65,
-      artisticInfluence: "vangogh"
-    }
-  },
-  {
-    id: 6,
-    title: "Dreamy Portrait",
-    description: "Ethereal portrait style with soft focus and luminous colors.",
-    imageUrl: artImages[5],
-    price: 49.99,
-    style: "portrait",
-    prompt: "Ethereal portrait with soft focus and luminous colors",
-    styleSettings: {
-      abstractToRealistic: 65,
-      warmToCool: 60,
-      minimalToDetailed: 45,
-      artisticInfluence: "artnouveau"
-    }
-  },
-  {
-    id: 7,
-    title: "Geometric Wonder",
-    description: "Bold geometric patterns create an optical illusion of depth and movement.",
-    imageUrl: artImages[6],
-    price: 49.99,
-    style: "abstract",
-    prompt: "Bold geometric patterns creating optical illusion of depth",
-    styleSettings: {
-      abstractToRealistic: 20,
-      warmToCool: 50,
-      minimalToDetailed: 80,
       artisticInfluence: "popart"
     }
   },
   {
-    id: 8,
-    title: "Nostalgic Sunset",
-    description: "A warm, hazy sunset vista with nostalgic retro-futuristic elements.",
-    imageUrl: artImages[7],
+    id: 5,
+    title: "Electronic Masquerade",
+    description: "An electronic band wearing striking Margiela-inspired masks, creating an enigmatic and futuristic presence.",
+    imageUrl: "/assets/-6e8ff_An_electronic_band_consisting_of_two_men_and_one_woman__they_are_wearing_masks_that_resemble_Kanye_West_s_2013_Margiela_masks_.png",
     price: 49.99,
-    style: "landscape",
-    prompt: "Warm hazy sunset with nostalgic retro-futuristic elements",
+    style: "portrait",
+    prompt: "An electronic band consisting of two men and one woman, they are wearing masks that resemble Kanye West's 2013 Margiela masks",
     styleSettings: {
-      abstractToRealistic: 70,
-      warmToCool: 25,
-      minimalToDetailed: 60,
+      abstractToRealistic: 90,
+      warmToCool: 20,
+      minimalToDetailed: 80,
       artisticInfluence: "vaporwave"
+    }
+  },
+  {
+    id: 6,
+    title: "Skeletal Serenade",
+    description: "A haunting black and white portrait of a skeletal queen in a white gown, performing on stage with regal grace.",
+    imageUrl: "/assets/-36113_A_skeletal_queen_singing_on_stage__wearing_a_white_gown_and_crown_with_a_microphone_in_hand__Black_and_white_photography__a_beautiful_dress_made_of_teeth_and_lace_.png",
+    price: 49.99,
+    style: "portrait",
+    prompt: "A skeletal queen singing on stage, wearing a white gown and crown with a microphone in hand",
+    styleSettings: {
+      abstractToRealistic: 65,
+      warmToCool: 50,
+      minimalToDetailed: 85,
+      artisticInfluence: "surrealism"
+    }
+  },
+  {
+    id: 7,
+    title: "Retro Roller",
+    description: "Close-up of cute girl's legs wearing roller skates on a checkered gradient grass floor, surrounded by flowers in a dreamy Alice in Wonderland aesthetic.",
+    imageUrl: "/assets/127f58_Close_up_of_cute_girl__s_legs_wearing_roller_skates_scrolling_on_a_checkered_gradient_grass_floor__There_are_flowers_around__Fisheye_lens__Alice_in_wonderland_aesthetic.png",
+    price: 49.99,
+    style: "portrait",
+    prompt: "Close-up of cute girl's legs wearing roller skates scrolling on a checkered gradient grass floor with flowers around",
+    styleSettings: {
+      abstractToRealistic: 80,
+      warmToCool: 60,
+      minimalToDetailed: 70,
+      artisticInfluence: "artnouveau"
+    }
+  },
+  {
+    id: 8,
+    title: "Midnight Ritual",
+    description: "Ominous cloaked, faceless figures circling a bonfire at a beach, hovering off the ground in an eerie twilight scene.",
+    imageUrl: "attached_assets/-5afe0_Ominous_cloaked__faceless_figures_circling_a_bonfire_at_a_beach__hovering_off_the_ground__their_feet_are_not_visible__candid_photograph_taken_on_a_smartphone_at_right_before_da.png",
+    price: 49.99,
+    style: "surreal",
+    prompt: "Ominous cloaked, faceless figures circling a bonfire at a beach, hovering off the ground",
+    styleSettings: {
+      abstractToRealistic: 75,
+      warmToCool: 30,
+      minimalToDetailed: 85,
+      artisticInfluence: "darkart"
     }
   }
 ];

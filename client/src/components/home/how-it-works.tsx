@@ -5,6 +5,7 @@ import {
   PulseAnimation, 
   RotateAnimation 
 } from "@/components/ui/motion-effects";
+import { TypeAnimation } from "@/components/ui/type-animation";
 
 const HowItWorks = () => {
   const ref = useRef(null);
@@ -20,28 +21,25 @@ const HowItWorks = () => {
   const steps = [
     {
       number: 1,
-      title: "Describe Your Vision",
+      title: "👄 Describe Your Vision",
       description:
         "Enter a prompt, upload a photo, or use voice input to tell us what you'd like to create.",
       example: '"A dreamy cottage under cosmic skies with ethereal atmosphere"',
-      color: "bg-primary",
-      icon: "fas fa-comment-dots",
+      color: "bg-[#EF4444]"
     },
     {
       number: 2,
-      title: "Customize Your Style",
+      title: "🎨 Customize Your Style",
       description:
         "Adjust sliders to refine your art style, color mood, and complexity until it's perfect.",
-      color: "bg-[#FF6B6B]",
-      icon: "fas fa-sliders",
+      color: "bg-[#F59E0B]"
     },
     {
       number: 3,
-      title: "Order & Display",
+      title: "🛒 Order & Display",
       description:
         "Choose your size, frame style, and finishes. Preview how it will look in your space.",
-      color: "bg-[#00CCAA]",
-      icon: "fas fa-images",
+      color: "bg-[#10B981]"
     },
   ];
 
@@ -82,7 +80,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <section id="how-it-works" className="py-20 bg-white scroll-mt-20 overflow-hidden">
+    <section id="how-it-works" className="py-20 bg-white dark:bg-neutral-900 scroll-mt-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -108,7 +106,7 @@ const HowItWorks = () => {
           </motion.div>
           
           <motion.p 
-            className="text-center text-neutral-600 max-w-2xl mx-auto mb-16"
+            className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -155,12 +153,12 @@ const HowItWorks = () => {
           {steps.map((step) => (
             <motion.div
               key={step.number}
-              className="relative bg-white rounded-2xl shadow-lg p-8 border border-neutral-200 transform transition-all hover:shadow-xl hover:-translate-y-1"
+              className="relative bg-white dark:bg-neutral-800 rounded-2xl shadow-lg p-8 border border-neutral-200 dark:border-neutral-700 transform transition-all hover:shadow-xl hover:-translate-y-1"
               variants={item}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <PulseAnimation duration={3} className="absolute -top-6 left-6">
+              <PulseAnimation duration={3} className="absolute -top-6 left-4">
                 <div
                   className={`${step.color} text-white w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl shadow-lg`}
                 >
@@ -168,24 +166,18 @@ const HowItWorks = () => {
                 </div>
               </PulseAnimation>
               
-              <div className="absolute top-4 right-4">
-                <FloatingAnimation duration={3} className="text-2xl text-primary opacity-50">
-                  <i className={step.icon}></i>
-                </FloatingAnimation>
-              </div>
-              
               <div className="pt-8">
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-neutral-600 mb-6">{step.description}</p>
+                <h3 className="text-xl font-semibold mb-3 dark:text-white">{step.title}</h3>
+                <p className="text-neutral-600 dark:text-neutral-300 mb-6">{step.description}</p>
                 
-                {step.example && (
+                {step.number === 1 && (
                   <motion.div 
-                    className="bg-neutral-100 rounded-xl p-4 text-sm text-neutral-700 italic"
+                    className="bg-neutral-100 dark:bg-neutral-700 rounded-xl p-4"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.4 }}
                   >
-                    {step.example}
+                    <TypeAnimation />
                   </motion.div>
                 )}
                 
@@ -199,8 +191,8 @@ const HowItWorks = () => {
                     <div className="flex items-center gap-2 relative">
                       <div className="h-2 flex-1 bg-gradient-to-r from-primary to-[#FF6B6B] rounded-full"></div>
                       <motion.div 
-                        className="absolute h-4 w-4 bg-white rounded-full border-2 border-primary shadow-sm"
-                        style={{ left: '60%' }}
+                        className="absolute h-4 w-4 bg-white dark:bg-neutral-800 rounded-full border-2 border-primary shadow-sm"
+                        style={{ left: '30%' }}
                         animate={{ 
                           x: [0, 10, -10, 0],
                         }}
@@ -210,14 +202,14 @@ const HowItWorks = () => {
                           repeatType: "reverse"
                         }}
                       />
-                      <div className="text-xs text-neutral-500">
+                      <div className="text-xs text-neutral-500 dark:text-neutral-300">
                         Abstract ↔ Realistic
                       </div>
                     </div>
                     <div className="flex items-center gap-2 relative">
                       <div className="h-2 flex-1 bg-gradient-to-r from-[#00CCAA] to-[#FF9F45] rounded-full"></div>
                       <motion.div 
-                        className="absolute h-4 w-4 bg-white rounded-full border-2 border-[#00CCAA] shadow-sm"
+                        className="absolute h-4 w-4 bg-white dark:bg-neutral-800 rounded-full border-2 border-[#00CCAA] shadow-sm"
                         style={{ left: '30%' }}
                         animate={{ 
                           x: [0, -5, 5, 0],
@@ -229,7 +221,7 @@ const HowItWorks = () => {
                           repeatType: "reverse"
                         }}
                       />
-                      <div className="text-xs text-neutral-500">
+                      <div className="text-xs text-neutral-500 dark:text-neutral-300">
                         Warm ↔ Cool
                       </div>
                     </div>
@@ -243,7 +235,7 @@ const HowItWorks = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.4 }}
                   >
-                    <div className="bg-neutral-100 rounded-xl p-2 overflow-hidden">
+                    <div className="bg-neutral-100 dark:bg-neutral-700 rounded-xl p-2 overflow-hidden">
                       <img
                         src="https://images.unsplash.com/photo-1532372576444-dda954194ad0"
                         alt="Framed artwork in home"
@@ -252,7 +244,7 @@ const HowItWorks = () => {
                       <motion.div 
                         className="absolute top-0 left-0 right-0 bottom-0 rounded-xl"
                         animate={{ 
-                          boxShadow: ["0px 0px 0px 0px rgba(93, 79, 255, 0)", "0px 0px 0px 3px rgba(93, 79, 255, 0.2)", "0px 0px 0px 0px rgba(93, 79, 255, 0)"]
+                          boxShadow: ["0px 0px 0px 0px rgba(239, 68, 68, 0)", "0px 0px 0px 3px rgba(239, 68, 68, 0.2)", "0px 0px 0px 0px rgba(239, 68, 68, 0)"]
                         }}
                         transition={{ 
                           duration: 2,
@@ -275,7 +267,7 @@ const HowItWorks = () => {
           transition={{ delay: 1.2, duration: 0.6 }}
         >
           <RotateAnimation className="inline-block" duration={8}>
-            <div className="bg-neutral-100 rounded-full p-2 mx-auto">
+            <div className="bg-neutral-100 dark:bg-neutral-800 rounded-full p-2 mx-auto">
               <div className="bg-gradient-to-r from-primary to-[#FF6B6B] p-3 rounded-full text-white">
                 <i className="fas fa-wand-magic-sparkles text-xl"></i>
               </div>

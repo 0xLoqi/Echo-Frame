@@ -79,11 +79,11 @@ export default function ArtDetails() {
             animate={{ opacity: 1, x: 0 }}
             className="lg:w-1/2"
           >
-            <div className="relative">
+            <div className="relative h-[450px] overflow-hidden rounded-xl shadow-lg">
               <img
                 src={artwork.imageUrl}
                 alt={artwork.title}
-                className="w-full h-auto rounded-xl shadow-lg object-cover"
+                className="w-full h-full rounded-xl object-contain"
               />
               <Button
                 onClick={() => setShowFullscreen(true)}
@@ -191,11 +191,11 @@ export default function ArtDetails() {
 
         <Dialog open={showFullscreen} onOpenChange={setShowFullscreen}>
           <DialogContent className="max-w-4xl w-[95vw] p-1 bg-neutral-900">
-            <div className="relative">
+            <div className="relative max-h-[80vh] overflow-hidden">
               <img
                 src={artwork.imageUrl}
                 alt={artwork.title}
-                className="w-full h-auto max-h-[80vh] object-contain"
+                className="w-full h-full object-contain"
               />
               <Button
                 onClick={() => setShowFullscreen(false)}

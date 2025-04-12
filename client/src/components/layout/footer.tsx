@@ -7,11 +7,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <span className="text-2xl font-bold text-white mb-4 block">
-              <i className="fas fa-paint-brush mr-2"></i>ArtifyAI
+              <i className="fas fa-paint-brush mr-2"></i>Echo & Frame
             </span>
             <p className="text-sm text-neutral-400 mb-4">
-              Using the power of AI to transform your ideas into beautiful custom
-              artwork.
+              Transform your ideas into Real, stunning artwork using the power of AI.
             </p>
             <div className="flex space-x-4">
               <a
@@ -45,23 +44,23 @@ const Footer = () => {
             <h3 className="text-lg font-medium text-white mb-4">Explore</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/create">
-                  <a className="hover:text-white transition">Create Art</a>
+                <Link href="/create" className="hover:text-white transition">
+                  Create Art
                 </Link>
               </li>
               <li>
-                <Link href="/gallery">
-                  <a className="hover:text-white transition">Gallery</a>
+                <Link href="/gallery" className="hover:text-white transition">
+                  Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/#how-it-works">
-                  <a className="hover:text-white transition">How It Works</a>
+                <Link href="/#how-it-works" className="hover:text-white transition">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/#pricing">
-                  <a className="hover:text-white transition">Pricing</a>
+                <Link href="/#pricing" className="hover:text-white transition">
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -112,7 +111,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-neutral-700 mt-8 pt-8 text-sm text-neutral-500 flex flex-col md:flex-row justify-between items-center">
-          <div>© {new Date().getFullYear()} ArtifyAI. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Echo & Frame. All rights reserved.</div>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="hover:text-neutral-300">
               Privacy Policy
